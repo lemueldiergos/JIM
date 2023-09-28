@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        scrollbar-width: 0;
+        
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    td, tr {
+        width: 100px;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .container_main {
+        display: flex;
+        flex-direction: row;
+        padding: 20px;
+    }
+
+    #container_1 {
+        overflow: auto;
+        height: 500px;
+    }
+
+    #container_1::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ID_MET {
+        width: 10%;
+        text-align: center;
+    }
+
+    .IT_MET, .SN_MET {
+        
+        text-align: center;
+        width: 37.5%;
+    }
+
+    .EQ_CLASS {
+        padding: 0 2.5%;
+    }
+
+    #C1IV, #C2IV, #C3IV, #C4IV, #C5IV {
+        text-align: center;
+        width: 30%;
+    }
+</style>
+<body>
+<h1>
+    ECEMATH 12
+    <h3>LAB Activity #1</h3>
+</h1>
+<div class="container_main">
+    <p>
+        <label>Student Name:</label><br>
+        Lemuel E. Diergos<br><br>
+        <label>ID Number:</label><br>
+        2020-1789-A</p>
+    <div class="EQ_CLASS">
+        <p>
+            AC<sub>1</sub> - BC<sub>2</sub> + CC<sub>3</sub> - DC<sub>4</sub> + EC<sub>5</sub> = 25<br>
+            BC<sub>1</sub> + CC<sub>2</sub> - DC<sub>3</sub> + EC<sub>4</sub> - AC<sub>5</sub> = 39<br>
+            CC<sub>1</sub> - DC<sub>2</sub> + EC<sub>3</sub> + AC<sub>4</sub> + BC<sub>5</sub> = 64<br>
+            DC<sub>1</sub> + EC<sub>2</sub> - AC<sub>3</sub> - BC<sub>4</sub> + CC<sub>5</sub> = 21<br>
+            EC<sub>1</sub> + AC<sub>2</sub> - BC<sub>3</sub> + CC<sub>4</sub> + DC<sub>5</sub> = 53
+        </p>
+    </div>
+    <div>
+        <p style="font-size: 3em;">⇒</p>
+    </div>
+    <div class="EQ_CLASS">
+        
+        <p>
+            <span class="ID_A">0</span>C<sub>1</sub> - <span class="ID_B">1</span>C<sub>2</sub> + <span class="ID_C">2</span>C<sub>3</sub> - <span class="ID_D">3</span>C<sub>4</sub> + <span class="ID_E">4</span>C<sub>5</sub> = 25<br>
+            <span class="ID_B">1</span>C<sub>1</sub> + <span class="ID_C">2</span>C<sub>2</sub> - <span class="ID_D">3</span>C<sub>3</sub> + <span class="ID_E">4</span>C<sub>4</sub> - <span class="ID_A">0</span>C<sub>5</sub> = 39<br>
+            <span class="ID_C">2</span>C<sub>1</sub> - <span class="ID_D">3</span>C<sub>2</sub> + <span class="ID_E">4</span>C<sub>3</sub> + <span class="ID_A">0</span>C<sub>4</sub> + <span class="ID_B">1</span>C<sub>5</sub> = 64<br>
+            <span class="ID_D">3</span>C<sub>1</sub> + <span class="ID_E">4</span>C<sub>2</sub> - <span class="ID_A">0</span>C<sub>3</sub> - <span class="ID_B">1</span>C<sub>4</sub> + <span class="ID_C">2</span>C<sub>5</sub> = 21<br>
+            <span class="ID_E">4</span>C<sub>1</sub> + <span class="ID_A">0</span>C<sub>2</sub> - <span class="ID_B">1</span>C<sub>3</sub> + <span class="ID_C">2</span>C<sub>4</sub> + <span class="ID_D">3</span>C<sub>5</sub> = 53
+        </p>
+    </div>
+    <div>
+        <p style="font-size: 3em;">⇒</p>
+    </div>
+    <div class="EQ_CLASS">
+        <p>
+            
+            <span class="ID_DN">3</span>C<sub>1</sub> + <span class="ID_E">4</span>C<sub>2</sub> - <span class="ID_A">0</span>C<sub>3</sub> - <span class="ID_B">1</span>C<sub>4</sub> + <span class="ID_C">2</span>C<sub>5</sub> = 21<br>
+            <span class="ID_CN">2</span>C<sub>1</sub> - <span class="ID_D">3</span>C<sub>2</sub> + <span class="ID_E">4</span>C<sub>3</sub> + <span class="ID_A">0</span>C<sub>4</sub> + <span class="ID_B">1</span>C<sub>5</sub> = 64<br>
+            <span class="ID_BN">1</span>C<sub>1</sub> + <span class="ID_C">2</span>C<sub>2</sub> - <span class="ID_D">3</span>C<sub>3</sub> + <span class="ID_E">4</span>C<sub>4</sub> - <span class="ID_A">0</span>C<sub>5</sub> = 39<br>
+            <span class="ID_AN">0</span>C<sub>1</sub> - <span class="ID_B">1</span>C<sub>2</sub> + <span class="ID_C">2</span>C<sub>3</sub> - <span class="ID_D">3</span>C<sub>4</sub> + <span class="ID_E">4</span>C<sub>5</sub> = 25<br>
+            <span class="ID_EN">4</span>C<sub>1</sub> + <span class="ID_A">0</span>C<sub>2</sub> - <span class="ID_B">1</span>C<sub>3</sub> + <span class="ID_C">2</span>C<sub>4</sub> + <span class="ID_D">3</span>C<sub>5</sub> = 53
+        </p>
+    </div>
+</div>
+
+<div class="container_main">
+    <div id="INPUTBOX">
+        
+        <input style="display: none;" value="2020" class="ID_MET" type="number"><input  style="display: none;" value="1789" class="ID_MET" type="number"><input style="display: none;" value="A" class="ID_MET" type="text"><br>
+        <label>Iteration:</label><br>
+        <input value="50" id="IT_VAL" class="IT_MET" type="number"><br><br>
+        <label>Significant Number:</label><br>
+        <input value="9" id="SN_VAL" class="SN_MET" type="number"><br><br><br>
+        <label>C<sub>1</sub> Initial Value:&ensp;&ensp;</label><input value="0" type="number" id="C1IV"/><br>
+        <label>C<sub>2</sub> Initial Value:&ensp;&ensp;</label><input value="0" type="number" id="C2IV"/><br>
+        <label>C<sub>3</sub> Initial Value:&ensp;&ensp;</label><input value="0" type="number" id="C3IV"/><br>
+        <label>C<sub>4</sub> Initial Value:&ensp;&ensp;</label><input value="0" type="number" id="C4IV"/><br>
+        <label>C<sub>5</sub> Initial Value:&ensp;&ensp;</label><input value="0" type="number" id="C5IV"/>
+        <br><br>
+        <button onclick="generate()" id="gen_BTN">Generate</button>
+    </div>
+    <div id="container_1">
+        <table border="1" id="tab_com">
+            
+           
+        </table>
+    </div>
+
+    <div id="container_2">
+        <table>
+            <tr>
+                <td>Iteration&ensp;=</td>
+                <td id="iterfinal_id">0</td>
+            </tr>
+            <tr>
+                <td>Status&ensp;=</td>
+                <td id="status_dc_id">None</td>
+            </tr>
+            <tr>
+                <td colspan="3"><h3>Values at Iteration of <span id="itermax_id">0</span></h3></td>
+            </tr>
+            <tr>
+                <td>C<sub>1</sub>&ensp;=</td>
+                <td id="c1_id">0</td>
+            </tr>
+            <tr>
+                <td>C<sub>2</sub>&ensp;=</td>
+                <td id="c2_id">0</td>
+            </tr>
+            <tr>
+                <td>C<sub>3</sub>&ensp;=</td>
+                <td id="c3_id">0</td>
+            </tr>
+            <tr>
+                <td>C<sub>4</sub>&ensp;=</td>
+                <td id="c4_id">0</td>
+            </tr>
+            <tr>
+                <td>C<sub>5</sub>&ensp;=</td>
+                <td id="c5_id">0</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
