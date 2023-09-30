@@ -19,6 +19,8 @@
 <style>
     body {
         scrollbar-width: 0;
+        display: flex;
+        flex-direction: column;
         
     }
 
@@ -40,7 +42,7 @@
 
     #container_1 {
         overflow: auto;
-        height: 500px;
+        height: 1000px;
     }
 
     #container_1::-webkit-scrollbar {
@@ -68,12 +70,15 @@
     }
 </style>
 <body>
-<h1>
-    ECEMATH 12
-    <h3>LAB Activity #1</h3>
-    <h3>Jacobi iterative method</h3>
-</h1>
+    <div>
+        <h1>
+            ECEMATH 12
+            <h3>LAB Activity #1</h3>
+            <h3>Jacobi iterative method</h3>
+        </h1>
+    </div>
 <div class="container_main">
+
     <p>
         <label>Student Name:</label><br>
         Lemuel E. Diergos<br><br>
@@ -132,51 +137,62 @@
         <br><br>
         <button onclick="generate()" id="gen_BTN">Generate</button>
     </div>
+    <table>
+        <tr>
+            <td>Iteration&ensp;=</td>
+            <td id="iterfinal_id">0</td>
+        </tr>
+        <tr>
+            <td>Status&ensp;=</td>
+            <td id="status_dc_id">None</td>
+        </tr>
+        <tr>
+            <td colspan="3"><h3>Values at Iteration of <span id="itermax_id">0</span></h3></td>
+        </tr>
+        <tr>
+            <td>C<sub>1</sub>&ensp;=</td>
+            <td id="c1_id">0</td>
+        </tr>
+        <tr>
+            <td>C<sub>2</sub>&ensp;=</td>
+            <td id="c2_id">0</td>
+        </tr>
+        <tr>
+            <td>C<sub>3</sub>&ensp;=</td>
+            <td id="c3_id">0</td>
+        </tr>
+        <tr>
+            <td>C<sub>4</sub>&ensp;=</td>
+            <td id="c4_id">0</td>
+        </tr>
+        <tr>
+            <td>C<sub>5</sub>&ensp;=</td>
+            <td id="c5_id">0</td>
+        </tr>
+    </table>
+</div>
+<div style="display: flex; flex-direction: row; flex-grow: 1;">
     <div id="container_1">
         <table border="1" id="tab_com">
             
            
         </table>
     </div>
-
-    <div id="container_2">
-        <table>
-            <tr>
-                <td>Iteration&ensp;=</td>
-                <td id="iterfinal_id">0</td>
-            </tr>
-            <tr>
-                <td>Status&ensp;=</td>
-                <td id="status_dc_id">None</td>
-            </tr>
-            <tr>
-                <td colspan="3"><h3>Values at Iteration of <span id="itermax_id">0</span></h3></td>
-            </tr>
-            <tr>
-                <td>C<sub>1</sub>&ensp;=</td>
-                <td id="c1_id">0</td>
-            </tr>
-            <tr>
-                <td>C<sub>2</sub>&ensp;=</td>
-                <td id="c2_id">0</td>
-            </tr>
-            <tr>
-                <td>C<sub>3</sub>&ensp;=</td>
-                <td id="c3_id">0</td>
-            </tr>
-            <tr>
-                <td>C<sub>4</sub>&ensp;=</td>
-                <td id="c4_id">0</td>
-            </tr>
-            <tr>
-                <td>C<sub>5</sub>&ensp;=</td>
-                <td id="c5_id">0</td>
-            </tr>
+    
+    <div id="container_1.1">
+        <table border="1" id="tab2_com">
+            
+           
         </table>
     </div>
+ 
 </div>
+    
+
 <script>
-var tablet1 = document.getElementById("tab_com");
+    var tablet1 = document.getElementById("tab_com");
+var tablet2 = document.getElementById("tab2_com");
+
 
 var INTERATION_STATUS = document.getElementById("status_dc_id");
 var INTERATION_STATE  = document.getElementById("itermax_id");
@@ -188,7 +204,7 @@ var final_val0 = document.getElementById("c1_id"),
     final_val4 = document.getElementById("c5_id");
 
 var tr_c;
-var tdi_c, td0_c, td1_c, td2_c;
+var tdi_c , tdier_c, td0_c, td1_c, td2_c, td3_c, td5_c, td6_c, td7_c, td8_c;
 
 var final_it = document.getElementById("iterfinal_id");
 
@@ -234,6 +250,13 @@ var X1_arr = [parseFloat(document.getElementById("C1IV").value)],
     X3_arr = [parseFloat(document.getElementById("C3IV").value)],
     X4_arr = [parseFloat(document.getElementById("C4IV").value)],
     X5_arr = [parseFloat(document.getElementById("C5IV").value)];
+
+var X1_ERR = [0],
+    X2_ERR = [0],
+    X3_ERR = [0],
+    X4_ERR = [0],
+    X5_ERR = [0];
+
 
 var set_iteration           = 100,
     set_decimal_place       = 4;
@@ -348,6 +371,13 @@ function generate1() {
     var C4H   = document.createElement("th");
     var C5H   = document.createElement("th");
     
+    var ERR    = document.createElement("th");
+    var C1H1   = document.createElement("th");
+    var C2H1   = document.createElement("th");
+    var C3H1   = document.createElement("th");
+    var C4H1   = document.createElement("th");
+    var C5H1   = document.createElement("th");
+
 
     IH.innerHTML = "Iteration";
     C1H.innerHTML = "<th>C<sub>1</sub></th>";
@@ -356,6 +386,14 @@ function generate1() {
     C4H.innerHTML = "<th>C<sub>4</sub></th>";
     C5H.innerHTML = "<th>C<sub>5</sub></th>";
     
+    ERR.innerHTML = "Accuracy Check";
+    C1H1.innerHTML = "<th>C<sub>1</sub></th>";
+    C2H1.innerHTML = "<th>C<sub>2</sub></th>";
+    C3H1.innerHTML = "<th>C<sub>3</sub></th>";
+    C4H1.innerHTML = "<th>C<sub>4</sub></th>";
+    C5H1.innerHTML = "<th>C<sub>5</sub></th>";
+    
+
 
     ITERH.appendChild(IH);
 
@@ -364,10 +402,19 @@ function generate1() {
     ITERH.appendChild(C3H);
     ITERH.appendChild(C4H);
     ITERH.appendChild(C5H);
+
+    ITERH.appendChild(ERR);
+
+    ITERH.appendChild(C1H1);
+    ITERH.appendChild(C2H1);
+    ITERH.appendChild(C3H1);
+    ITERH.appendChild(C4H1);
+    ITERH.appendChild(C5H1);
     
     
 
     tablet1.appendChild(ITERH);
+    // *******************************************************************
 
  for(i = 0 ; i <= set_iteration ; i++) {
 
@@ -392,11 +439,18 @@ td3_c.innerHTML = X4_arr[i].toFixed(set_decimal_place);
 
 td4_c = document.createElement("td");
 td4_c.innerHTML = X5_arr[i].toFixed(set_decimal_place);
+// -------------------
+
+tdier_c = document.createElement("td");
+tdier_c.innerHTML = "-";
+
+
+
 
 
 tr_c.appendChild(tdi_c);
 
-
+tr_c.appendChild(tdi_c);
 tr_c.appendChild(td0_c);
 tr_c.appendChild(td1_c);
 tr_c.appendChild(td2_c);
@@ -404,7 +458,6 @@ tr_c.appendChild(td3_c);
 tr_c.appendChild(td4_c);
 
 
-tablet1.appendChild(tr_c);
 
 // ------------------------- SOLVE ------------------
 
@@ -416,8 +469,28 @@ tablet1.appendChild(tr_c);
     let x4 = ( (ARR_NEW_TAB[3][5]) - (ARR_NEW_TAB[3][0]*X1_arr[i]) - (ARR_NEW_TAB[3][1]*X2_arr[i]) - (ARR_NEW_TAB[3][2]*X3_arr[i]) - (ARR_NEW_TAB[3][4]*X5_arr[i])) / C4_DM; 
     let x5 = ( (ARR_NEW_TAB[4][5]) - (ARR_NEW_TAB[4][0]*X1_arr[i]) - (ARR_NEW_TAB[4][1]*X2_arr[i]) - (ARR_NEW_TAB[4][2]*X3_arr[i]) - (ARR_NEW_TAB[4][3]*X4_arr[i])) / C5_DM;
 
+    X1_ERR = C1_DM - ((ARR_NEW_TAB[0][0] * X1_arr[i]) + (ARR_NEW_TAB[0][1] * X2_arr[i]) + (ARR_NEW_TAB[0][2] * X3_arr[i]) +  (ARR_NEW_TAB[0][3] * X4_arr[i]) + (ARR_NEW_TAB[0][4] * X5_arr[i]));
+    X2_ERR = C2_DM - ((ARR_NEW_TAB[1][0] * X1_arr[i]) + (ARR_NEW_TAB[1][1] * X2_arr[i]) + (ARR_NEW_TAB[1][2] * X3_arr[i]) +  (ARR_NEW_TAB[1][3] * X4_arr[i]) + (ARR_NEW_TAB[1][4] * X5_arr[i]));
+    X3_ERR = C3_DM - ((ARR_NEW_TAB[2][0] * X1_arr[i]) + (ARR_NEW_TAB[2][1] * X2_arr[i]) + (ARR_NEW_TAB[2][2] * X3_arr[i]) +  (ARR_NEW_TAB[2][3] * X4_arr[i]) + (ARR_NEW_TAB[2][4] * X5_arr[i]));
+    X4_ERR = C4_DM - ((ARR_NEW_TAB[3][0] * X1_arr[i]) + (ARR_NEW_TAB[3][1] * X2_arr[i]) + (ARR_NEW_TAB[3][2] * X3_arr[i]) +  (ARR_NEW_TAB[3][3] * X4_arr[i]) + (ARR_NEW_TAB[3][4] * X5_arr[i]));
+    X5_ERR = C5_DM - ((ARR_NEW_TAB[4][0] * X1_arr[i]) + (ARR_NEW_TAB[4][1] * X2_arr[i]) + (ARR_NEW_TAB[4][2] * X3_arr[i]) +  (ARR_NEW_TAB[4][3] * X4_arr[i]) + (ARR_NEW_TAB[4][4] * X5_arr[i]));
 
+    td5_c = document.createElement("td");
+    td5_c.innerHTML = (X1_ERR).toFixed(2) ;
 
+    td6_c = document.createElement("td");
+    td6_c.innerHTML = (X2_ERR).toFixed(2) ;
+    
+    td7_c = document.createElement("td");
+    td7_c.innerHTML = (X3_ERR).toFixed(2) ;
+
+    td8_c = document.createElement("td");
+    td8_c.innerHTML = (X4_ERR).toFixed(2) ;
+
+    td9_c = document.createElement("td");
+    td9_c.innerHTML = (X5_ERR).toFixed(2) ;
+
+    console.log(C5_DM);
 
     X1_arr.push(x1);
     X2_arr.push(x2);
@@ -434,14 +507,22 @@ tablet1.appendChild(tr_c);
     //console.log(X1_arr[i].toFixed(set_decimal_place) + " : " + X2_arr[i].toFixed(set_decimal_place) + " : " + X3_arr[i].toFixed(set_decimal_place) + " : " + X4_arr[i].toFixed(set_decimal_place) + " : " + X5_arr[i].toFixed(set_decimal_place) );
  
 
-    
+    tr_c.appendChild(tdier_c);
+    tr_c.appendChild(td5_c);
+    tr_c.appendChild(td6_c);
+    tr_c.appendChild(td7_c);
+    tr_c.appendChild(td8_c);
+    tr_c.appendChild(td9_c);
+
+
+    tablet1.appendChild(tr_c);
 
 }
 
     try {
      Fixed_iteration = (x1_iteration_stop[0] + x2_iteration_stop[0] + x3_iteration_stop[0] +  x4_iteration_stop[0] +  x5_iteration_stop[0])/5;
      final_it.innerHTML = Math.round(Fixed_iteration);
-        INTERATION_STATUS.innerHTML = "Converge";
+        INTERATION_STATUS.innerHTML = "Converging";
         INTERATION_STATE.innerHTML  = set_decimal_place;
      final_val0.innerHTML = X1_arr[Math.round(Fixed_iteration)].toFixed(set_decimal_place);
      final_val1.innerHTML = X2_arr[Math.round(Fixed_iteration)].toFixed(set_decimal_place);
@@ -451,7 +532,7 @@ tablet1.appendChild(tr_c);
     } catch(e) {
         //console.log(e);
         final_it.innerHTML = "Infinite";
-        INTERATION_STATUS.innerHTML = "Diverge";
+        INTERATION_STATUS.innerHTML = "Diverging";
         INTERATION_STATE.innerHTML  = set_iteration;
         final_val0.innerHTML = X1_arr[set_iteration].toFixed(set_decimal_place);
         final_val1.innerHTML = X2_arr[set_iteration].toFixed(set_decimal_place);
@@ -464,7 +545,6 @@ tablet1.appendChild(tr_c);
 }
 
 generate();
-
 
 
 
